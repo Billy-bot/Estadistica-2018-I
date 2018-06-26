@@ -128,6 +128,52 @@ $(document).ready(function () {
 
 <div id="item-a" class="section level3">
 <h3>Item (a):</h3>
+<pre class="r"><code>sexo &lt;- c('F', 'M', 'M', 'M', 'F', 'F', 'F', 'M', 'M', 'M', 'M', 'F', 'M', 'F', 'F', 'F', 'M', 'M', 'M', 'M')
+partido &lt;- c(&quot;Laboral&quot;, &quot;Nacional&quot;, &quot;Nacional&quot;, &quot;Laboral&quot;, &quot;Nacional&quot;, &quot;Verdes&quot;, &quot;Nacional&quot;, &quot;Nacional&quot;, &quot;Verdes&quot;, &quot;Otro&quot;, &quot;Verdes&quot;, &quot;Laboral&quot;, &quot;Nacional&quot;, &quot;Nacional&quot;, &quot;Laboral&quot;, &quot;Laboral&quot;, &quot;Nacional&quot;, &quot;Nacional&quot;, &quot;Laboral&quot;, &quot;Otro&quot;)
+sexo</code></pre>
+<pre><code>##  [1] &quot;F&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;F&quot; &quot;M&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;M&quot;
+## [18] &quot;M&quot; &quot;M&quot; &quot;M&quot;</code></pre>
+<pre class="r"><code>partido</code></pre>
+<pre><code>##  [1] &quot;Laboral&quot;  &quot;Nacional&quot; &quot;Nacional&quot; &quot;Laboral&quot;  &quot;Nacional&quot; &quot;Verdes&quot;  
+##  [7] &quot;Nacional&quot; &quot;Nacional&quot; &quot;Verdes&quot;   &quot;Otro&quot;     &quot;Verdes&quot;   &quot;Laboral&quot; 
+## [13] &quot;Nacional&quot; &quot;Nacional&quot; &quot;Laboral&quot;  &quot;Laboral&quot;  &quot;Nacional&quot; &quot;Nacional&quot;
+## [19] &quot;Laboral&quot;  &quot;Otro&quot;</code></pre>
+</div>
+<div id="item-b" class="section level3">
+<h3>Item (b):</h3>
+<pre class="r"><code>sexo.fac &lt;- factor(sexo)
+partido.fac &lt;- factor(partido)
+sexo.fac</code></pre>
+<pre><code>##  [1] F M M M F F F M M M M F M F F F M M M M
+## Levels: F M</code></pre>
+<pre class="r"><code>partido.fac</code></pre>
+<pre><code>##  [1] Laboral  Nacional Nacional Laboral  Nacional Verdes   Nacional
+##  [8] Nacional Verdes   Otro     Verdes   Laboral  Nacional Nacional
+## [15] Laboral  Laboral  Nacional Nacional Laboral  Otro    
+## Levels: Laboral Nacional Otro Verdes</code></pre>
+<pre class="r"><code># R prdena los niveles de forma alfabética.
+
+sexo.fac &lt;- factor(sexo, ordered = TRUE)
+partido.fac &lt;- factor(partido, ordered = TRUE)
+sexo.fac</code></pre>
+<pre><code>##  [1] F M M M F F F M M M M F M F F F M M M M
+## Levels: F &lt; M</code></pre>
+<pre class="r"><code>partido.fac</code></pre>
+<pre><code>##  [1] Laboral  Nacional Nacional Laboral  Nacional Verdes   Nacional
+##  [8] Nacional Verdes   Otro     Verdes   Laboral  Nacional Nacional
+## [15] Laboral  Laboral  Nacional Nacional Laboral  Otro    
+## Levels: Laboral &lt; Nacional &lt; Otro &lt; Verdes</code></pre>
+<pre class="r"><code># En este caso no tiene sentido usar el ordered = TRUE, ya que la comparación daría el mismo resultado si no lo estuviera.</code></pre>
+</div>
+<div id="item-c" class="section level3">
+<h3>Item (c):</h3>
+<pre class="r"><code>partido.fac[sexo.fac == 'M']</code></pre>
+<pre><code>##  [1] Nacional Nacional Laboral  Nacional Verdes   Otro     Verdes  
+##  [8] Nacional Nacional Nacional Laboral  Otro    
+## Levels: Laboral &lt; Nacional &lt; Otro &lt; Verdes</code></pre>
+<pre class="r"><code>sexo.fac[partido.fac == &quot;Nacional&quot;]</code></pre>
+<pre><code>## [1] M M F F M M F M M
+## Levels: F &lt; M</code></pre>
 </div>
 
 

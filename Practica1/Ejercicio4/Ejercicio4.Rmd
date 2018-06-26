@@ -1,0 +1,72 @@
+---
+title: "Ejercicio4"
+author: "Guillermo Joel Borjas Córdova"
+date: "June 13, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Item (a):
+
+```{r}
+foo <- array(data = 1:36, dim = c(3, 3, 4))
+class(f1)
+bar <- as.vector(f1)
+class(bar)
+baz <- as.character(bar)
+class(baz)
+qux <- as.factor(baz)
+class(qux)
+quux <- bar + c(-0.1, 0.1)
+class(quux)
+```
+
+### Item (b):
+
+```{r}
+foo.sum <- is.numeric(foo) + is.integer(foo)
+bar.sum <- is.numeric(bar) + is.integer(bar)
+baz.sum <- is.numeric(baz) + is.integer(baz)
+qux.sum <- is.numeric(qux) + is.integer(qux)
+quux.sum <- is.numeric(quux) + is.integer(quux)
+foo.sum
+bar.sum
+baz.sum
+qux.sum
+quux.sum
+coleccion <- c(foo.sum, bar.sum, baz.sum, qux.sum, quux.sum)
+coleccion.fac <- factor(x=coleccion, levels = c(0,1,2))
+coleccion.fac
+foo.num <- as.numeric(foo)
+bar.num <- as.numeric(bar)
+baz.num <- as.numeric(baz)
+qux.num <- as.numeric(qux)
+quux.num <- as.numeric(quux)
+foo.num
+bar.num
+baz.num
+qux.num
+quux.num
+coleccion.num <- c(foo.num, bar.num, baz.num, qux.num, quux.num)
+coleccion.num.fac <- factor(x=coleccion.num)
+# Comparando factores:
+coleccion.fac
+coleccion.num.fac
+```
+
+### Item (c):
+
+```{r}
+M <- matrix(c(34, 23, 33, 42, 41, 1, 0, 0, 1, 1, 1, 2, 1, 1, 2), nrow = 5)
+M
+mat <- as.data.frame(M)
+mat[[1]]
+mat[[2]] <- as.logical(mat[[2]])
+mat[[2]]
+mat[[3]] <- as.factor(mat[[3]])
+mat[[3]]
+mat
+```

@@ -10,3 +10,58 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Item (a):
+
+```{r}
+sexo <- c('F', 'M', 'M', 'M', 'F', 'F', 'F', 'M', 'M', 'M', 'M', 'F', 'M', 'F', 'F', 'F', 'M', 'M', 'M', 'M')
+partido <- c("Laboral", "Nacional", "Nacional", "Laboral", "Nacional", "Verdes", "Nacional", "Nacional", "Verdes", "Otro", "Verdes", "Laboral", "Nacional", "Nacional", "Laboral", "Laboral", "Nacional", "Nacional", "Laboral", "Otro")
+sexo
+partido
+```
+
+### Item (b):
+
+```{r}
+sexo.fac <- factor(sexo)
+partido.fac <- factor(partido)
+sexo.fac
+partido.fac
+# Comparando sin oredered = TRUE, usando los vectores en lugar de los factores.
+partido[1] > partido[2]
+# R ordena los niveles de forma alfabética.
+
+sexo.fac <- factor(sexo, ordered = TRUE)
+partido.fac <- factor(partido, ordered = TRUE)
+sexo.fac
+partido.fac
+# Comparando con ordered = TRUE
+partido.fac[1] > partido.fac[2]
+# En este caso no tiene sentido usar el ordered = TRUE, ya que la comparación daría el mismo resultado si no lo usáramos.
+```
+
+### Item (c):
+
+```{r}
+partido.levels = c("Nacional", "Laboral", "Verdes", "Maori", "Otro")
+partido.fac <- factor(partido, levels = partido.levels, ordered = TRUE)
+partido.fac[sexo.fac == 'M']
+sexo.fac[partido.fac == "Nacional"]
+```
+
+### Item (d):
+
+```{r}
+partido2 <- factor(c("Nacional", "Maori", "Maori", "Laboral", "Verdes", "Laboral"), levels = levels(partido.fac), ordered = T)
+sexo2 <- factor(c('M', 'M', 'F', 'F', 'F', 'M'), levels = levels(sexo.fac), ordered = T)
+partido.nuevo <- levels(partido.fac)[c(partido.fac, partido2)]
+partido.nuevo.fac <- factor(partido.nuevo, levels = levels(partido.fac), ordered = T)
+partido.nuevo.fac
+confianza <- c(93, 55, 29, 100, 52, 84, 56, 0, 33, 52, 35, 53, 55, 46, 40, 40, 56, 45, 64, 31, 10, 29, 40, 95, 18, 61)
+cortes <- c(0, 30, 70, 100)
+etiquetas <- c("Bajo", "Moderado", "Alto")
+confianza.fact <- cut(confianza, breaks = cortes, right = F, include.lowest = T, labels = etiquetas)
+confianza
+confianza.fact
+confianza.fact[partido.nuevo.fac == "Laboral"]
+confianza.fact[partido.nuevo.fac == "Nacional"]
+# Se nota que los que empatizan con el partido laboral tienen más confianza en que su partido ganará más escaños en el parlamento que el partido nacional. Los que empatizan con el partido nacional, su grado de confianza es menor de que esto suceda.
+```
